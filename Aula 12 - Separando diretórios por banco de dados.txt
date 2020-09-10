@@ -1,0 +1,57 @@
+// Aula 12 - Separando diretórios por banco de dados
+
+mkdir -p /data/db
+
+mongod --dbpath /data/db
+
+mongo localhost:27017
+
+use mydb
+
+db.mycol.insert({foo:1})
+
+exit
+
+ls -la /data/db
+
+mkdir /data/newdb
+
+mongod --dbpath /data/newdb --directoryperdb
+
+mongo localhost:27017
+
+use mydb
+
+db.mycol.insert({bar:1})
+
+exit
+
+ls -la /data/newdb
+
+mongo localhost:27017
+
+use mydb
+
+var curiosidade = db.mycol.stats()
+
+curiosidade['wiredTiger']['uri']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

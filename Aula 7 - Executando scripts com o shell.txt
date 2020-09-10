@@ -1,0 +1,71 @@
+// Aula 7 - Executando scripts com o shell
+
+$ vim mongorc.js
+
+==============================================================
+
+// mongorc.js
+
+var compliment = ["esperto", "inteligente", "agradável"];
+var index = Math.floor(Math.random()*3);
+
+print("Ei, vc esta hj mais "+compliment[index]+" SQN!");
+
+==============================================================
+
+mongo mongorc.js
+
+$ mongo
+
+> load("mongorc.js")
+
+> run("ls", "-l", "/root/")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

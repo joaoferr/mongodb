@@ -1,0 +1,130 @@
+// Aula 9 - Criação de usuários para um sistema de e-commerce
+
+mongo admin -u admin -p
+
+use ecommerce
+
+var user = {
+  "user" : "website",
+  "pwd" : "123456",
+  roles : [
+      {
+          "role" : "readWrite",
+          "db" : "ecommerce"
+      }
+  ]
+}
+
+db.createUser(user);
+
+exit
+
+> mongo ecommerce -u website -p
+
+db.products.insert({ "titulo" : "MongoDB em ação"  });
+
+db.products.findOne();
+
+db.products.update({}, {"$set" : { "tipo" : "livro" } })
+
+db.products.findOne();
+
+> mongo admin -u admin -p
+
+var user = {
+  "user" : "reporting",
+  "pwd" : "123456",
+  roles : [
+      {
+          "role" : "readAnyDatabase",
+          "db" : "admin"
+      }
+  ]
+}
+
+db.createUser(user);
+
+exit
+
+> mongo admin -u reporting -p
+
+show dbs
+
+use ecommerce
+
+db.products.find();
+
+db.products.insert({ "titulo" : "MongoDB em ação"  });
+
+> mongo admin -u admin -p
+
+db.grantRolesToUser(
+  "admin",
+  [{ "role" : "readWriteAnyDatabase", "db" : "admin" }]
+)
+
+db.getUser("admin");
+
+use hr
+
+db.employees.insert({ "nome":"Vitor Mazuco", "hire_date" : new Date() });
+
+db.organization.insert({ "nome" : "Programador" });
+
+db.employees.findOne();
+
+use admin
+
+var role = {
+  "role"  : "webSiteManagerRole",
+  privileges : [
+      {
+          "resource": {"db" : "hr", "collection" : "employees"},
+          "actions": ["find"]
+      }
+  ],
+  "roles" : [
+      {
+          "role" : "readWrite",
+          "db" : "ecommerce"
+      }
+  ]
+}
+
+db.createRole( role );
+
+var user = {
+  "user" : "master",
+  "pwd" : "123456",
+  roles : [
+      {
+          "role" : "webSiteManagerRole",
+          "db" : "admin"
+      }
+  ]
+}
+
+db.createUser(user);
+
+exit
+
+mongo admin -u master -p
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

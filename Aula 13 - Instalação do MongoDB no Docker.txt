@@ -1,0 +1,65 @@
+// Aula 13 - Instalação do MongoDB no Docker
+
+Nessa aula, vamos usar o MongoDB no Docker.
+
+Primeiramente, vamos fazer a instalação dele:
+
+sudo apt install docker.io
+
+sudo systemctl start docker
+
+sudo systemctl enable docker
+
+docker --version
+
+Vamos baixar uma versão específica:
+
+docker pull mongo:4.0.13
+
+Vamos ver quais imagens temos dele:
+
+docker images
+
+Agora, vamos criar o servidor sem senha, recomendado para ambiente de desenvolvimento:
+
+docker run -d -v /data/db:/data/db --name mymongo mongo:4.0.13
+
+Se aparecer o erro de Enderço já em uso, digite o comando a seguir e mate o mongo "original" não o que estamos subindo agora!
+
+ps wuax | grep mongo
+
+sudo kill ?
+
+Agora, vamos subir o servidor Mongo:
+
+docker ps -a
+
+Vamos agora subir o nosso servidor:
+
+docker exec -it mymongo mongo
+
+Subir um outro Docker com as configurações específicas:
+
+docker run -d -v /data/db:/data/db --name mymongo2 --net=host mongo:4.0.13 --bind_ip 127.0.0.1 --port 27000
+
+E depois vamos conectar:
+
+docker exec -it mymongo2 mongo localhost:27000
+
+Caso queria ver os logs:
+
+docker logs mymongo
+
+Caso queria parar uma instância:
+
+docker ps -a
+
+docker stop 6af0bd4b9bbe
+
+Ou remover:
+
+docker container rm 6af0bd4b9bbe
+
+
+
+

@@ -1,0 +1,108 @@
+CREATE:
+
+	> post = {"title" : "Meu Blog",
+	"content" : "Meu Primeiro Post",
+	"date" : new Date()}
+
+	> db.blog.insert(post)
+
+	> db.blog.find()
+
+READ:
+
+	> db.blog.findOne()
+
+
+UPDATE:
+
+	> post.comments = []
+
+	> db.blog.update({title : "Meu Blog"}, post)
+
+	> db.blog.find()
+
+DELETE:
+
+	> db.blog.remove({title : "Meu Blog"})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

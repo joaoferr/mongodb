@@ -1,0 +1,45 @@
+// Aula 1.1 - Instalando o MongoDB 4.x no Ubuntu Server
+
+Nessa aula, vamos fazer a instalação do MongoDB versão 4.x em nosso Ubuntu Server. 
+
+wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+
+echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+
+sudo apt-get update
+sudo apt-get install mongodb-org
+
+A seguir, inicie o serviço com systemctl.
+
+sudo systemctl enable mongod.service
+
+sudo systemctl start mongod.service
+
+sudo systemctl status mongod.service
+
+Verifique a versão:
+
+mongod --version 
+
+Depois de instalar, vamos ver algumas configurações importantes:
+
+vim /etc/mongod.conf
+
+Aqui, temos as informações importantes do nosso MongoDB, onde se localizam os nossos dados, quais configurações de portas e seus endereços IP's, entre outros.
+
+Para entrar na shell, basta digitar:
+
+$ mongo
+
+use mydb;
+
+db.test.save( { teste: 100 } )
+
+db.test.find()
+
+Vamos também desabilitar o recurso de Network Online no Startup:
+
+systemctl disable systemd-networkd-wait-online.service
+
+systemctl mask systemd-networkd-wait-online.service
+

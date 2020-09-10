@@ -1,0 +1,62 @@
+// Aula 8 - Criando e manipulando usuários em seu MongoDB
+
+# mkdir -p /data/db
+
+# mongod --auth
+
+# mongo
+
+> show dbs
+
+> use admin
+
+> show users
+
+var user = {
+  "user" : "admin",
+  "pwd" : "123456",
+  roles : [
+      {
+          "role" : "userAdminAnyDatabase",
+          "db" : "admin"
+      }
+  ]
+}
+
+db.createUser(user);
+
+exit
+
+# mongo admin -u admin -p
+
+Links de referência:
+https://docs.mongodb.com/manual/core/authentication/
+https://docs.mongodb.com/manual/reference/built-in-roles/
+https://docs.mongodb.com/manual/reference/built-in-roles/#all-database-roles
+https://docs.mongodb.com/manual/reference/method/db.dropUser/#db.dropUser
+https://docs.mongodb.com/manual/core/security-mongodb-cr/#authentication-mongodb-cr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

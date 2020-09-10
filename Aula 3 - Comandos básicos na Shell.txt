@@ -1,0 +1,75 @@
+> x = 200
+> x / 5;
+
+> Math.sin(Math.PI / 2);
+> new Date("2018/1/1");
+> "Hello, World!".replace("World", "MongoDB");
+
+> function factorial (n) {
+if (n <= 1) return 1;
+return n * factorial(n - 1);
+}
+> factorial(5);
+
+> db
+
+> use foobar
+> db
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
